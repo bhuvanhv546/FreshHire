@@ -45,15 +45,21 @@ import AnalyticsDashboard from './pages/AnalyticsDashboard';
 
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
-  const { isAuthenticated, user } = useSelector(state => state.auth)
+  const auth = useSelector((state) => state.auth);
 
-  if (!isAuthenticated) return <Navigate to="/login" />
-  if (allowedRoles && !allowedRoles.includes(user?.role)) {
-    return <Navigate to="/dashboard" />
+  const isAuthenticated = auth?.isAuthenticated;
+  const user = auth?.user;
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" replace />;
   }
 
-  return children
-}
+  if (allowedRoles && !allowedRoles.includes(user?.role)) {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  return children;
+};
 
 function App() {
   const { darkMode } = useSelector(state => state.theme)
