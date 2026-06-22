@@ -47,7 +47,7 @@ const JobDetails = () => {
       }
 
       await axios.post(
-        `http://freshhire-backend.onrender.com/api/applications/${id}/apply`,
+        `https://freshhire-backend.onrender.com/api/applications/${id}/apply`,
         {},
         {
           headers: {
@@ -74,7 +74,7 @@ const JobDetails = () => {
         localStorage.getItem('token')
 
       await axios.post(
-        `http://freshhire-backend.onrender.com/api/saved-jobs/${id}`,
+        `https://freshhire-backend.onrender.com/api/saved-jobs/${id}`,
         {},
         {
           headers: {

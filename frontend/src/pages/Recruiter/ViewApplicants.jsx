@@ -17,7 +17,7 @@ const ViewApplicants = () => {
       const token = localStorage.getItem('token')
 
       const res = await axios.get(
-        `http://freshhire-backend.onrender.com/api/applications/job/${jobId}`,
+        `https://freshhire-backend.onrender.com/api/applications/job/${jobId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -43,7 +43,7 @@ const ViewApplicants = () => {
       const token = localStorage.getItem('token')
 
       await axios.put(
-        `http://freshhire-backend.onrender.com/api/applications/${applicationId}/status`,
+        `https://freshhire-backend.onrender.com/api/applications/${applicationId}/status`,
         {
           status
         },
