@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Toaster } from 'react-hot-toast'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLocation } from 'react-router-dom'
 
 import Navbar from './components/Layout/Navbar'
 import Footer from './components/Layout/Footer'
@@ -76,12 +77,21 @@ function App() {
 const { isAuthenticated } = useSelector(
   (state) => state.auth
 )
+const location = useLocation();
 
+const authPages = [
+  '/login',
+  '/register',
+  '/forgot-password',
+  '/reset-password'
+];
+
+const hideLayout = authPages.includes(location.pathname);
  return (
  <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
 
 
-  <Navbar />
+  {!hideLayout && <Navbar />}
 
   <AnimatePresence mode="wait">
     <motion.main
@@ -230,7 +240,7 @@ const { isAuthenticated } = useSelector(
     </motion.main>
   </AnimatePresence>
 
-  <Footer />
+  {!hideLayout && <Footer />}
   <Toaster position="top-right" />
 
 </div>

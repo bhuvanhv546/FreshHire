@@ -12,7 +12,7 @@ export default function Navbar() {
           FreshHire India
         </Link>
 
-        <div className="flex gap-6">
+        <div className="hidden md:flex items-center gap-6">
           <Link to="/">Home</Link>
           <Link to="/jobs">Jobs</Link>
           <Link to="/resume-analyzer">Resume Analyzer</Link>
