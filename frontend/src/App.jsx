@@ -64,71 +64,313 @@ function App() {
   }, [darkMode])
 
   return (
-    <Router>
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-        <Navbar />
-        <AnimatePresence mode="wait">
-          <motion.main
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/forgot-password" element={<ForgotPassword />} />
-              <Route path="/reset-password" element={<ResetPassword />} />
-              <Route path="/dashboard" element={<ProtectedRoute allowedRoles={['user','recruiter','admin']}><Dashboard /></ProtectedRoute>} />
-              <Route path="/jobs" element={<Jobs />} />
-              <Route path="/jobs/:id" element={<JobDetails />} />
-              <Route
-  path="/skill-gap"
-  element={<SkillGap />}
-/>
-              <Route
-  path="/career-roadmap"
-  element={<CareerRoadmap />}
-/>
-              <Route path="/resume-builder" element={<ProtectedRoute allowedRoles={['user']}><ResumeBuilder /></ProtectedRoute>} />
-              <Route path="/salary-predictor" element={<SalaryPredictor />} />
-              <Route path="/company-tracker" element={<CompanyTracker />} />
-              <Route path="/interview-prep" element={<InterviewPrep />} />
-              <Route path="/chatbot" element={<Chatbot />} />
-              <Route path="/learning-resources" element={<LearningResources />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/admin" element={<ProtectedRoute allowedRoles={['admin']}><AdminDashboard /></ProtectedRoute>}/>
-              <Route path="/my-applications"element={<MyApplications />}/>
-              <Route path="/resume-upload"element={<ResumeUpload />}/>
-              <Route path="/resume-analyzer"element={<ResumeAnalyzer />}/>
-              <Route path="/saved-jobs"element={<SavedJobs />}/>
-              <Route path="/recruiter/dashboard"element={<RecruiterDashboard />}/>
-              <Route path="/recruiter/post-job"element={<PostJob />}/>
-              <Route path="/recruiter/my-jobs"element={<MyJobs />}/>
-              <Route path="/recruiter/edit-job/:id"element={<EditJob />}/>
-              <Route path="/recruiter/applicants/:jobId"element={<ViewApplicants />}/>
-              <Route path="/resume"element={<ResumeUpload />}/>
-              <Route path="/my-resume"element={<MyResume />}/>
-              <Route path="/recruiter-dashboard"element={<RecruiterAnalytics />}/>
-              <Route path="/recruiter/profile"element={<RecruiterProfile />}/>
-              <Route path="/notifications"element={<Notifications />}/>
-              <Route path="/company-profile"element={<CompanyProfile />}/>
-              <Route
-  path="/ats-score"
-  element={<ATSScore />}/>
+   
+    
+ <Routes>
+
+  {/* Public Routes */}
   <Route
-  path="/analytics-dashboard"
-  element={<AnalyticsDashboard />}
-/>
-              
-            </Routes>
-          </motion.main>
-        </AnimatePresence>
-        <Footer />
-        <Toaster position="top-right" />
-      </div>
-    </Router>
+    path="/"
+    element={
+      localStorage.getItem("token")
+        ? <Navigate to="/dashboard" />
+        : <Navigate to="/login" />
+    }
+  />
+
+  <Route path="/login" element={<Login />} />
+  <Route path="/register" element={<Register />} />
+  <Route path="/forgot-password" element={<ForgotPassword />} />
+  <Route path="/reset-password" element={<ResetPassword />} />
+
+  {/* Protected Routes */}
+
+  <Route
+    path="/dashboard"
+    element={
+      <ProtectedRoute allowedRoles={['user', 'recruiter', 'admin']}>
+        <Dashboard />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/jobs"
+    element={
+      <ProtectedRoute>
+        <Jobs />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/jobs/:id"
+    element={
+      <ProtectedRoute>
+        <JobDetails />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/resume-analyzer"
+    element={
+      <ProtectedRoute>
+        <ResumeAnalyzer />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/skill-gap"
+    element={
+      <ProtectedRoute>
+        <SkillGap />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/career-roadmap"
+    element={
+      <ProtectedRoute>
+        <CareerRoadmap />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/resume-builder"
+    element={
+      <ProtectedRoute>
+        <ResumeBuilder />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/salary-predictor"
+    element={
+      <ProtectedRoute>
+        <SalaryPredictor />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/company-tracker"
+    element={
+      <ProtectedRoute>
+        <CompanyTracker />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/interview-prep"
+    element={
+      <ProtectedRoute>
+        <InterviewPrep />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/chatbot"
+    element={
+      <ProtectedRoute>
+        <Chatbot />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/learning-resources"
+    element={
+      <ProtectedRoute>
+        <LearningResources />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/profile"
+    element={
+      <ProtectedRoute>
+        <Profile />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/my-applications"
+    element={
+      <ProtectedRoute>
+        <MyApplications />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/resume-upload"
+    element={
+      <ProtectedRoute>
+        <ResumeUpload />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/resume"
+    element={
+      <ProtectedRoute>
+        <ResumeUpload />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/my-resume"
+    element={
+      <ProtectedRoute>
+        <MyResume />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/saved-jobs"
+    element={
+      <ProtectedRoute>
+        <SavedJobs />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/notifications"
+    element={
+      <ProtectedRoute>
+        <Notifications />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/company-profile"
+    element={
+      <ProtectedRoute>
+        <CompanyProfile />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/ats-score"
+    element={
+      <ProtectedRoute>
+        <ATSScore />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/analytics-dashboard"
+    element={
+      <ProtectedRoute>
+        <AnalyticsDashboard />
+      </ProtectedRoute>
+    }
+  />
+
+  {/* Recruiter Routes */}
+
+  <Route
+    path="/recruiter/dashboard"
+    element={
+      <ProtectedRoute allowedRoles={['recruiter', 'admin']}>
+        <RecruiterDashboard />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/recruiter/post-job"
+    element={
+      <ProtectedRoute allowedRoles={['recruiter', 'admin']}>
+        <PostJob />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/recruiter/my-jobs"
+    element={
+      <ProtectedRoute allowedRoles={['recruiter', 'admin']}>
+        <MyJobs />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/recruiter/edit-job/:id"
+    element={
+      <ProtectedRoute allowedRoles={['recruiter', 'admin']}>
+        <EditJob />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/recruiter/applicants/:jobId"
+    element={
+      <ProtectedRoute allowedRoles={['recruiter', 'admin']}>
+        <ViewApplicants />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/recruiter-dashboard"
+    element={
+      <ProtectedRoute allowedRoles={['recruiter', 'admin']}>
+        <RecruiterAnalytics />
+      </ProtectedRoute>
+    }
+  />
+
+  <Route
+    path="/recruiter/profile"
+    element={
+      <ProtectedRoute allowedRoles={['recruiter', 'admin']}>
+        <RecruiterProfile />
+      </ProtectedRoute>
+    }
+  />
+
+  {/* Admin */}
+
+  <Route
+    path="/admin"
+    element={
+      <ProtectedRoute allowedRoles={['admin']}>
+        <AdminDashboard />
+      </ProtectedRoute>
+    }
+  />
+
+  {/* Catch All */}
+
+  <Route
+    path="*"
+    element={
+      localStorage.getItem("token")
+        ? <Navigate to="/dashboard" />
+        : <Navigate to="/login" />
+    }
+  />
+
+</Routes>
   )
 }
 
