@@ -7,6 +7,8 @@ import {
   Clock,
   Building
 } from 'lucide-react'
+import { API_BASE_URL } from "../config/api";
+
 
 const JobDetails = () => {
   const { id } = useParams()
@@ -22,9 +24,8 @@ const JobDetails = () => {
   const fetchJob = async () => {
     try {
       const res = await axios.get(
-        `http://freshhire-backend.onrender.com/api/jobs/${id}`
-      )
-
+  `${API_BASE_URL}/jobs/${id}`
+);
       setJob(res.data)
     } catch (err) {
       console.error(err)
