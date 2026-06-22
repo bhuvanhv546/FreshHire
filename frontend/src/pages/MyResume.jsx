@@ -54,13 +54,12 @@ function MyResume() {
           </p>
 
           <a
-            href={`https://freshhire-backend.onrender.com/${resume.resumeUrl}`}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded"
-          >
-            View Resume
-          </a>
+  href={`https://freshhire-backend.onrender.com/${resume.resumeUrl}`}
+  target="_blank"
+  rel="noreferrer"
+>
+  View Resume
+</a>
         </div>
       )}
     </div>
