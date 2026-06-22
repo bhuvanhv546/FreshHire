@@ -9,7 +9,7 @@ const SkillGap = () => {
 
   const analyze = async () => {
     const res = await axios.post(
-  'http://freshhire-backend.onrender.com/api/skills/gap-analysis',
+  'https://freshhire-backend.onrender.com/api/skills/gap-analysis',
       {
         currentSkills: skills.split(','),
         targetDomain: domain

@@ -25,7 +25,7 @@ const RecruiterDashboard = () => {
         localStorage.getItem('token')
 
       const res = await axios.get(
-        'http://freshhire-backend.onrender.com/api/recruiter-analytics/dashboard',
+        'https://freshhire-backend.onrender.com/api/recruiter-analytics/dashboard',
         {
           headers: {
             Authorization: `Bearer ${token}`

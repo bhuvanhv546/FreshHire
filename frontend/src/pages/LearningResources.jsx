@@ -9,7 +9,7 @@ const LearningResources = () => {
   const getResources = async () => {
 
     const res = await axios.post(
-      'http://freshhire-backend.onrender.com/api/learning/resources',
+      'https://freshhire-backend.onrender.com/api/learning/resources',
       { domain }
     );
 

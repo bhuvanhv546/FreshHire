@@ -13,7 +13,7 @@ const Chatbot = () => {
 
     const res =
       await axios.post(
-        'http://freshhire-backend.onrender.com/api/chatbot/chat',
+        'https://freshhire-backend.onrender.com/api/chatbot/chat',
         { message }
       );
 

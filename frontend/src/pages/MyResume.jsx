@@ -13,7 +13,7 @@ function MyResume() {
       const token = localStorage.getItem("token");
 
       const res = await axios.get(
-        "http://freshhire-backend.onrender.com/api/resume/my-resume",
+        "https://freshhire-backend.onrender.com/api/resume/my-resume",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -54,7 +54,7 @@ function MyResume() {
           </p>
 
           <a
-            href={`http://freshhire-backend.onrender.com/${resume.resumeUrl}`}
+            href={`https://freshhire-backend.onrender.com/${resume.resumeUrl}`}
             target="_blank"
             rel="noreferrer"
             className="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded"

@@ -17,7 +17,7 @@ function ResumeUpload() {
       const token = localStorage.getItem("token");
 
       const res = await axios.post(
-        "http://freshhire-backend.onrender.com/api/resume/upload",
+        "https://freshhire-backend.onrender.com/api/resume/upload",
         formData,
         {
           headers: {

@@ -13,7 +13,7 @@ const SalaryPredictor = () => {
       setLoading(true);
 
       const res = await axios.post(
-        'http://freshhire-backend.onrender.com/api/salary/predict',
+        'https://freshhire-backend.onrender.com/api/salary/predict',
         {
           skills: skills.split(',').map(skill => skill.trim()),
           experience: Number(experience),

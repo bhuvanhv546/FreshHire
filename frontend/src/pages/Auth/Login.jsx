@@ -16,7 +16,7 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        'http://freshhire-backend.onrender.com/api/auth/login',
+        'https://freshhire-backend.onrender.com/api/auth/login',
         {
           method: 'POST',
           headers: {

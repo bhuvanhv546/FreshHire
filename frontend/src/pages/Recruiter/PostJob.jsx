@@ -49,7 +49,7 @@ export default function PostJob() {
       const token = localStorage.getItem('token')
 
       await axios.post(
-        'http://freshhire-backend.onrender.com/api/jobs',
+        'https://freshhire-backend.onrender.com/api/jobs',
         {
           title: formData.title,
 

@@ -24,7 +24,7 @@ const Register = () => {
 
     try {
       const response = await fetch(
-        'http://freshhire-backend.onrender.com/api/auth/register',
+        'https://freshhire-backend.onrender.com/api/auth/register',
         {
           method: 'POST',
           headers: {

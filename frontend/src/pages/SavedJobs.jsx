@@ -13,7 +13,7 @@ const SavedJobs = () => {
       const token = localStorage.getItem('token')
 
       const res = await axios.get(
-        'http://freshhire-backend.onrender.com/api/saved-jobs',
+        'https://freshhire-backend.onrender.com/api/saved-jobs',
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -32,7 +32,7 @@ const SavedJobs = () => {
       const token = localStorage.getItem('token')
 
       await axios.delete(
-        `http://freshhire-backend.onrender.com/api/saved-jobs/${jobId}`,
+        `https://freshhire-backend.onrender.com/api/saved-jobs/${jobId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`

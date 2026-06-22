@@ -18,7 +18,7 @@ export default function EditJob() {
 
   const loadJob = async () => {
     const res = await axios.get(
-      `http://freshhire-backend.onrender.com/api/jobs/${id}`
+      `https://freshhire-backend.onrender.com/api/jobs/${id}`
     )
 
     setFormData({
@@ -36,7 +36,7 @@ export default function EditJob() {
         localStorage.getItem('token')
 
       await axios.put(
-        `http://freshhire-backend.onrender.com/api/jobs/${id}`,
+        `https://freshhire-backend.onrender.com/api/jobs/${id}`,
         formData,
         {
           headers: {

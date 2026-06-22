@@ -10,7 +10,7 @@ const [roadmap, setRoadmap] = useState(null);
   const generate = async () => {
   try {
     const res = await axios.post(
-      'http://freshhire-backend.onrender.com/api/roadmap/generate',
+      'https://freshhire-backend.onrender.com/api/roadmap/generate',
       {
         targetDomain: domain
       },
