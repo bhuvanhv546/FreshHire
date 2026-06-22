@@ -1,0 +1,1 @@
+import {createSlice} from '@reduxjs/toolkit'; const s=createSlice({name:'theme',initialState:{darkMode:false},reducers:{toggleTheme:(st)=>{st.darkMode=!st.darkMode}}}); export const {toggleTheme}=s.actions; export default s.reducer;
