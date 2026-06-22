@@ -24,7 +24,7 @@ const Register = () => {
 
     try {
       const response = await fetch(
-        'http://localhost:5004/api/auth/register',
+        'http://freshhire-backend.onrender.com/api/auth/register',
         {
           method: 'POST',
           headers: {

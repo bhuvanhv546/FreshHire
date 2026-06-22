@@ -16,7 +16,7 @@ const ResumeAnalyzer = () => {
 
         const res =
           await axios.post(
-            "http://localhost:5004/api/resume-analyzer/analyze",
+            "http://freshhire-backend.onrender.com/api/resume-analyzer/analyze",
             {},
             {
               headers: {

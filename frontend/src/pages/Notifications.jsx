@@ -27,7 +27,7 @@ export default function Notifications() {
 
       const res =
         await axios.get(
-          'http://localhost:5004/api/notifications',
+          'http://freshhire-backend.onrender.com/api/notifications',
           {
             headers: {
               Authorization:

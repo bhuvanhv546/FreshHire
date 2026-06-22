@@ -15,7 +15,7 @@ export default function MyJobs() {
       const token = localStorage.getItem('token')
 
       const res = await axios.get(
-        'http://localhost:5004/api/jobs/my-jobs',
+        'http://freshhire-backend.onrender.com/api/jobs/my-jobs',
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -45,10 +45,10 @@ export default function MyJobs() {
     const token = localStorage.getItem("token");
 
     console.log("TOKEN:", token);
-    console.log("URL:", `http://localhost:5004/api/jobs/${id}`);
+    console.log("URL:", `http://freshhire-backend.onrender.com/api/jobs/${id}`);
 
     const res = await axios.delete(
-      `http://localhost:5004/api/jobs/${id}`,
+      `http://freshhire-backend.onrender.com/api/jobs/${id}`,
       {
         headers: {
           Authorization: `Bearer ${token}`

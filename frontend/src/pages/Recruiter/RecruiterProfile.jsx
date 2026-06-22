@@ -27,7 +27,7 @@ const RecruiterProfile = () => {
         localStorage.getItem('token')
 
       const res = await axios.get(
-        'http://localhost:5004/api/users/profile',
+        'http://freshhire-backend.onrender.com/api/users/profile',
         {
           headers: {
             Authorization:
@@ -64,7 +64,7 @@ const RecruiterProfile = () => {
         localStorage.getItem('token')
 
       await axios.put(
-        'http://localhost:5004/api/users/profile',
+        'http://freshhire-backend.onrender.com/api/users/profile',
         {
           companyProfile:
             profile

@@ -12,7 +12,8 @@ const ATSScore = () => {
   const calculateScore = async () => {
 
     const res = await axios.post(
-      'http://localhost:5004/api/ats/score',
+      'https://freshhire-backend.onrender.com/api/ats/score',
+  
       {
         skills: skills.split(','),
         projects: projects.split(','),

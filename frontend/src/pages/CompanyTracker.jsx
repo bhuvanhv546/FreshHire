@@ -12,7 +12,7 @@ const CompanyTracker = () => {
     try {
 
       const res = await axios.post(
-        'http://localhost:5004/api/company/track',
+        'http://freshhire-backend.onrender.com/api/company/track',
         { company }
       );
 

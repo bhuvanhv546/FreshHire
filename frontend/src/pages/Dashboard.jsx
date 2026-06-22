@@ -18,7 +18,7 @@ const Dashboard = () => {
       const token = localStorage.getItem('token')
 
       const res = await axios.get(
-        'http://localhost:5004/api/applications/my-applications',
+        'http://freshhire-backend.onrender.com/api/applications/my-applications',
         {
           headers: {
             Authorization: `Bearer ${token}`

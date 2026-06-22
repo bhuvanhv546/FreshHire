@@ -29,7 +29,7 @@ const CompanyProfile = () => {
       const token = localStorage.getItem('token')
 
       const res = await axios.get(
-        'http://localhost:5004/api/users/profile',
+        'http://freshhire-backend.onrender.com/api/users/profile',
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -91,7 +91,7 @@ const CompanyProfile = () => {
         localStorage.getItem('token')
 
       await axios.put(
-        'http://localhost:5004/api/users/profile',
+        'http://freshhire-backend.onrender.com/api/users/profile',
         {
           companyProfile: {
             companyName:

@@ -23,7 +23,7 @@ const AdminDashboard = () => {
         localStorage.getItem('token')
 
       const res = await axios.get(
-        'http://localhost:5004/api/admin/dashboard',
+        'http://freshhire-backend.onrender.com/api/admin/dashboard',
         {
           headers: {
             Authorization: `Bearer ${token}`

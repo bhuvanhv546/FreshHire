@@ -22,7 +22,7 @@ const JobDetails = () => {
   const fetchJob = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5004/api/jobs/${id}`
+        `http://freshhire-backend.onrender.com/api/jobs/${id}`
       )
 
       setJob(res.data)
@@ -46,7 +46,7 @@ const JobDetails = () => {
       }
 
       await axios.post(
-        `http://localhost:5004/api/applications/${id}/apply`,
+        `http://freshhire-backend.onrender.com/api/applications/${id}/apply`,
         {},
         {
           headers: {
@@ -73,7 +73,7 @@ const JobDetails = () => {
         localStorage.getItem('token')
 
       await axios.post(
-        `http://localhost:5004/api/saved-jobs/${id}`,
+        `http://freshhire-backend.onrender.com/api/saved-jobs/${id}`,
         {},
         {
           headers: {

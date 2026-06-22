@@ -11,7 +11,7 @@ const InterviewPrep = () => {
     try {
 
       const res = await axios.post(
-        'http://localhost:5004/api/interview/questions',
+        'http://freshhire-backend.onrender.com/api/interview/questions',
         { domain }
       );
 
