@@ -11,6 +11,10 @@ function MyResume() {
   const fetchResume = async () => {
     try {
       const token = localStorage.getItem("token");
+      console.log(resume);
+console.log(
+  `https://freshhire-backend.onrender.com/${resume.resumeUrl}`
+);
 
       const res = await axios.get(
         "https://freshhire-backend.onrender.com/api/resume/my-resume",
@@ -57,6 +61,7 @@ function MyResume() {
   href={`https://freshhire-backend.onrender.com/${resume.resumeUrl.replace(/\\/g, "/")}`}
   target="_blank"
   rel="noreferrer"
+  className="text-blue-600 underline"
 >
   View Resume
 </a>
