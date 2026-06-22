@@ -54,7 +54,7 @@ function MyResume() {
           </p>
 
           <a
-  href={`https://freshhire-backend.onrender.com/${resume.resumeUrl}`}
+  href={`https://freshhire-backend.onrender.com/${resume.resumeUrl.replace(/\\/g, "/")}`}
   target="_blank"
   rel="noreferrer"
 >
