@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Toaster } from 'react-hot-toast'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -45,16 +46,20 @@ import AnalyticsDashboard from './pages/AnalyticsDashboard';
 
 
 const ProtectedRoute = ({ children, allowedRoles }) => {
-  const auth = useSelector((state) => state.auth);
+  const auth = useSelector((state) => state.auth || {});
 
-  const isAuthenticated = auth?.isAuthenticated;
-  const user = auth?.user;
+  const isAuthenticated = auth.isAuthenticated;
+  const user = auth.user;
 
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 
-  if (allowedRoles && !allowedRoles.includes(user?.role)) {
+  if (
+    allowedRoles &&
+    user &&
+    !allowedRoles.includes(user.role)
+  ) {
     return <Navigate to="/dashboard" replace />;
   }
 
@@ -62,12 +67,16 @@ const ProtectedRoute = ({ children, allowedRoles }) => {
 };
 
 function App() {
-  const { darkMode } = useSelector(state => state.theme)
-
+  const darkMode =
+  useSelector(state => state.theme?.darkMode) || false;
   useEffect(() => {
     if (darkMode) document.documentElement.classList.add('dark')
     else document.documentElement.classList.remove('dark')
   }, [darkMode])
+  
+const { isAuthenticated } = useSelector(
+  (state) => state.auth
+)
 
   return (
    
@@ -92,13 +101,13 @@ function App() {
   {/* Protected Routes */}
 
   <Route
-    path="/dashboard"
-    element={
-      <ProtectedRoute allowedRoles={['user', 'recruiter', 'admin']}>
-        <Dashboard />
-      </ProtectedRoute>
-    }
-  />
+  path="/dashboard"
+  element={
+    <ProtectedRoute>
+      <Dashboard />
+    </ProtectedRoute>
+  }
+/>
 
   <Route
     path="/jobs"

@@ -62,17 +62,20 @@ export const logout = createAsyncThunk('auth/logout', async () => {
 
 const authSlice = createSlice({
   name: 'auth',
+
   initialState: {
     user: null,
-    isAuthenticated: false,
+    isAuthenticated: !!localStorage.getItem('token'),
     loading: false,
     error: null,
   },
+
   reducers: {
     clearError: (state) => {
       state.error = null
     },
   },
+
   extraReducers: (builder) => {
     builder
       .addCase(login.pending, (state) => {
