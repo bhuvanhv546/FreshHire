@@ -12,7 +12,7 @@ exports.uploadResume = async (req, res) => {
 
     const resume = await Resume.create({
       user: req.user.userId,
-      resumeUrl:req.file.path.replace(/\\/g, "/")
+      resumeUrl:req.file.path.replace(/\\/g, "/"),
       originalName: req.file.originalname
     });
 
