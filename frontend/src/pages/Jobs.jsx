@@ -42,7 +42,7 @@ const Jobs = () => {
         localStorage.getItem('token')
 
       await axios.post(
-        `http://localhost:5004/api/saved-jobs/${jobId}`,
+        `https://freshhire-backend.onrender.com/api/saved-jobs/${jobId}`,
         {},
         {
           headers: {

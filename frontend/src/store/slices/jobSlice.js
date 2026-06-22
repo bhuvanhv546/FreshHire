@@ -5,9 +5,8 @@ export const fetchJobs = createAsyncThunk(
   'jobs/fetchJobs',
   async () => {
     const response = await axios.get(
-      'http://localhost:5004/api/jobs'
-    )
-
+  'https://freshhire-backend.onrender.com/api/jobs'
+)
     return response.data
   }
 )
