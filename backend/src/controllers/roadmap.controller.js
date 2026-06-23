@@ -54,9 +54,8 @@ exports.generateRoadmap = async (req, res) => {
       ]
     };
 
-    const roadmap =
-      roadmaps[targetDomain.toLowerCase()] || [];
-
+   const roadmap =
+  roadmaps[targetDomain.trim().toLowerCase()] || [];
     res.json({
       targetDomain,
       roadmap

@@ -7,12 +7,18 @@ const CareerRoadmap = () => {
 const [skills, setSkills] = useState('');
 const [goal, setGoal] = useState('');
 const [roadmap, setRoadmap] = useState(null);
-  const generate = async () => {
+  
+   
+const generate = async () => {
   try {
+    setLoading(true);
+
     const res = await axios.post(
       'https://freshhire-backend.onrender.com/api/roadmap/generate',
       {
-        targetDomain: domain
+        targetDomain: domain,
+        currentSkills: skills,
+        careerGoal: goal
       },
       {
         headers: {
@@ -20,11 +26,17 @@ const [roadmap, setRoadmap] = useState(null);
         }
       }
     );
-
-    
+console.log("Roadmap Response:", res.data);
     setRoadmap(res.data.roadmap);
   } catch (error) {
     console.error(error);
+
+    alert(
+      error.response?.data?.message ||
+      "Failed to generate roadmap"
+    );
+  } finally {
+    setLoading(false);
   }
 };
 
@@ -35,7 +47,13 @@ const [roadmap, setRoadmap] = useState(null);
         <input placeholder="Domain (e.g., Data Science)" value={domain} onChange={(e) => setDomain(e.target.value)} className="w-full p-2 border rounded-lg mb-4" />
         <input placeholder="Current skills (comma)" value={skills} onChange={(e) => setSkills(e.target.value)} className="w-full p-2 border rounded-lg mb-4" />
         <input placeholder="Career goal" value={goal} onChange={(e) => setGoal(e.target.value)} className="w-full p-2 border rounded-lg mb-4" />
-        <button onClick={generate} className="bg-primary-600 text-white px-6 py-2 rounded-lg">Generate Roadmap</button>
+        <button
+  onClick={generate}
+  disabled={loading}
+  className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg"
+>
+  {loading ? 'Generating...' : 'Generate Roadmap'}
+</button>
       </div>
       {roadmap && <RoadmapCard roadmap={roadmap} />}
     </div>
