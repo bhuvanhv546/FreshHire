@@ -24,9 +24,9 @@ exports.generateRoadmap = async (req, res) => {
       process.env.GEMINI_API_KEY
     );
 
-    const model = genAI.getGenerativeModel({
-      model: "gemini-2.0-flash"
-    });
+   const model = genAI.getGenerativeModel({
+  model: "gemini-2.5-flash-lite"
+});
 
     const prompt = `
 Generate a professional career roadmap.
