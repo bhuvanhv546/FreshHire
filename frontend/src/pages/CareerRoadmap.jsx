@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import RoadmapCard from '../pages/RoadmapCard';
+const [loading, setLoading] = useState(false);
 
 const CareerRoadmap = () => {
   const [domain, setDomain] = useState('');
@@ -8,8 +9,7 @@ const [skills, setSkills] = useState('');
 const [goal, setGoal] = useState('');
 const [roadmap, setRoadmap] = useState(null);
   
-   
-const generate = async () => {
+   const generate = async () => {
   try {
     setLoading(true);
 
@@ -26,18 +26,17 @@ const generate = async () => {
         }
       }
     );
-console.log("Roadmap Response:", res.data);
-    setRoadmap(res.data.roadmap);
-  } catch (error) {
-    console.error(error);
 
-    alert(
-      error.response?.data?.message ||
-      "Failed to generate roadmap"
-    );
-  } finally {
+    setRoadmap(res.data.roadmap);
+  }
+   catch (error) {
+    console.error(error);
+    alert("Failed to generate roadmap");
+  } 
+  finally {
     setLoading(false);
   }
+}
 };
 
   return (
@@ -58,6 +57,6 @@ console.log("Roadmap Response:", res.data);
       {roadmap && <RoadmapCard roadmap={roadmap} />}
     </div>
   );
-};
+
 
 export default CareerRoadmap;
