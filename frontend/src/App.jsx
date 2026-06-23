@@ -1,10 +1,14 @@
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Layout/Navbar";
 
 function App() {
   return (
     <>
       <Navbar />
-      <h1>FreshHire Working</h1>
+
+      <Routes>
+        <Route path="/" element={<h1>Home Working</h1>} />
+      </Routes>
     </>
   );
 }
