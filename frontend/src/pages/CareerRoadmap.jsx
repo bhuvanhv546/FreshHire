@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import RoadmapCard from '../components/AI/RoadmapCard';
+import RoadmapCard from '../pages/RoadmapCard';
 
 const CareerRoadmap = () => {
   const [domain, setDomain] = useState('');
