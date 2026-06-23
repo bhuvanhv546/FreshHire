@@ -1,8 +1,11 @@
+import Navbar from "./components/Layout/Navbar";
+
 function App() {
   return (
-    <div style={{ padding: "50px" }}>
-      <h1>FreshHire Test Working</h1>
-    </div>
+    <>
+      <Navbar />
+      <h1>FreshHire Working</h1>
+    </>
   );
 }
 
