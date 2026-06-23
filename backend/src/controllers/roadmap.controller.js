@@ -15,27 +15,13 @@ exports.generateRoadmap = async (req, res) => {
       });
     }
 
-    console.log(
-      "Gemini Key Exists:",
-      !!process.env.GEMINI_API_KEY
-    );
-
     const genAI = new GoogleGenerativeAI(
       process.env.GEMINI_API_KEY
     );
 
-   try {
-  const result = await model.generateContent(prompt);
-} catch (error) {
-  if (error.message.includes("503")) {
-    return res.status(503).json({
-      success: false,
-      message: "Gemini is busy. Please try again in 30 seconds."
+    const model = genAI.getGenerativeModel({
+      model: "gemini-2.0-flash"
     });
-  }
-}
-
-
 
     const prompt = `
 Generate a professional career roadmap.
@@ -56,6 +42,11 @@ Return ONLY valid JSON in this format:
     "phase": "Phase 2",
     "title": "Title",
     "skills": ["Skill 1", "Skill 2"]
+  },
+  {
+    "phase": "Phase 3",
+    "title": "Title",
+    "skills": ["Skill 1", "Skill 2"]
   }
 ]
 
@@ -64,13 +55,29 @@ Do not include markdown.
 Do not include \`\`\`json.
 `;
 
-    const result = await model.generateContent(prompt);
+    let result;
+
+    try {
+      result = await model.generateContent(prompt);
+    } catch (error) {
+      if (
+        error.message.includes("503") ||
+        error.message.includes("429")
+      ) {
+        return res.status(503).json({
+          success: false,
+          message:
+            "Gemini is busy. Please try again after a minute."
+        });
+      }
+
+      throw error;
+    }
 
     const response = await result.response;
 
     let text = response.text();
 
-    // Clean Gemini response
     text = text
       .replace(/```json/g, "")
       .replace(/```/g, "")
@@ -87,14 +94,18 @@ Do not include \`\`\`json.
 
       roadmap = [
         {
-          phase: "AI Generated",
-          title: `${targetDomain} Career Roadmap`,
-          skills: [text]
+          phase: "Phase 1",
+          title: `${targetDomain} Foundation`,
+          skills: [
+            "Core Concepts",
+            "Projects",
+            "Practice"
+          ]
         }
       ];
     }
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       roadmap
     });
@@ -102,7 +113,7 @@ Do not include \`\`\`json.
   } catch (error) {
     console.error("Roadmap Error:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
       message: error.message
     });
