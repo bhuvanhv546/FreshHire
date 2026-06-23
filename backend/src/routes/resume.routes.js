@@ -29,5 +29,10 @@ router.post(
   auth,
   resumeController.saveResumeAnalysis
 );
+router.post(
+  '/analyze',
+  auth,
+  resumeController.analyzeResume
+);
 
 module.exports = router;
