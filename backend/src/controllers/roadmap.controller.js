@@ -24,9 +24,18 @@ exports.generateRoadmap = async (req, res) => {
       process.env.GEMINI_API_KEY
     );
 
-   const model = genAI.getGenerativeModel({
-  model: "gemini-2.5-flash-lite"
-});
+   try {
+  const result = await model.generateContent(prompt);
+} catch (error) {
+  if (error.message.includes("503")) {
+    return res.status(503).json({
+      success: false,
+      message: "Gemini is busy. Please try again in 30 seconds."
+    });
+  }
+}
+
+
 
     const prompt = `
 Generate a professional career roadmap.
